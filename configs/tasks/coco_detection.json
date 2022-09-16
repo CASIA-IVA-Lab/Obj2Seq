@@ -1,0 +1,3 @@
+[
+    {"name": "detection", "num_cats": 80, "num_steps": 4, "required_outputs": ["pred_logits", "pred_boxes"], "required_targets": {"boxes": [0, 4]}, "losses": ["labels", "boxes"]}
+]

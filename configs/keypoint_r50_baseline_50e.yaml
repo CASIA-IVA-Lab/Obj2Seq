@@ -1,0 +1,35 @@
+DATA:
+  type: coco
+  COCO:
+    coco_path: data/coco
+    anno_train: data/coco/annotations/person_keypoints_train2017.json
+    anno_val: data/coco/annotations/person_keypoints_val2017.json
+    remove_empty_annotations: True
+MODEL:
+  with_prompt_indicator: False
+  OBJECT_DECODER:
+    num_layers: 6
+    HEAD:
+      type: SeparateKeypointHead
+      CLASSIFIER:
+        num_layers: 1
+        type: linear
+      LOSS:
+        losses: ['labels', 'boxes', 'keypoints', 'oks' ]
+        keypoint_l1_loss_coef: 40.0
+        keypoint_oks_loss_coef: 5.0
+        keypoint_normalization: "num_pts"
+        MATCHER:
+          set_cost_keypoints_l1: 40.0
+          set_cost_keypoints_oks: 5.0
+          set_class_normalization: "num_box"
+          set_box_normalization: "num_box"
+          set_keypoint_normalization: "num_pts"
+          set_oks_normalization: "num_box"
+TRAIN:
+  lr: 3e-4
+  lr_groups: [["backbone", "reference_points", "sampling_offsets"]]
+  lr_mults: [0.1]
+EVAL:
+  postprocessor: Keypoint
+  iou_types: [ bbox, keypoints ]

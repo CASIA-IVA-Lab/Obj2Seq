@@ -1,0 +1,25 @@
+DATA:
+  type: coco
+  COCO:
+    coco_path: data/coco
+    anno_train: data/coco/annotations/instances_train2017.json
+    anno_val: data/coco/annotations/instances_val2017.json
+  TRANSFORM:
+    arrange_by_class: False
+MODEL:
+  with_prompt_indicator: False
+  OBJECT_DECODER:
+    num_layers: 6
+    num_query_position: 300
+    with_query_pos_embed: True
+    HEAD:
+      type: SeparateDetectHead
+      CLASSIFIER:
+        type: multi
+        num_layers: 0
+TRAIN:
+  lr: 2e-4
+  lr_groups: [["backbone", "reference_points", "sampling_offsets"]]
+  lr_mults: [0.1]
+EVAL:
+  postprocessor: Detr

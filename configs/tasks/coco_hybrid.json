@@ -1,0 +1,4 @@
+[
+    {"name": "pose", "num_cats": 1, "num_steps": 38, "required_outputs": ["pred_logits", "pred_boxes", "pred_keypoints"], "required_targets": {"boxes": [0, 4], "keypoints": [0, 17, 3]}, "losses": ["labels", "boxes", "keypoints", "oks"]},
+    {"name": "detection", "num_cats": 79, "num_steps": 4, "required_outputs": ["pred_logits", "pred_boxes"], "required_targets": {"boxes": [0, 4]}, "losses": ["labels", "boxes"]}
+]

@@ -1,0 +1,13 @@
+**/__pycache__/**
+checkpoints/
+checkpoints
+data/
+*.pyc
+*.swp
+
+# Deformable
+models/ops/
+
+# PHOENIX
+batchscript-*
+phoenix-slurm-*

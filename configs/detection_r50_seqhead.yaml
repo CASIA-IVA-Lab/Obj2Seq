@@ -1,0 +1,19 @@
+DATA:
+  type: coco
+  COCO:
+    coco_path: data/coco
+    anno_train: data/coco/annotations/instances_train2017.json
+    anno_val: data/coco/annotations/instances_val2017.json
+MODEL:
+  PROMPT_INDICATOR:
+    CLASS_PROMPTS:
+      init_vectors: word_arrays/coco_clip_v2.npy
+  OBJECT_DECODER:
+    HEAD:
+      type: SeqHead
+      combine_method: multiple
+TRAIN:
+  lr: 2e-4
+  lr_groups: [["backbone", "reference_points", "sampling_offsets"]]
+  lr_mults: [0.1]
+

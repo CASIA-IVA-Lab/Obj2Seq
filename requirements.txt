@@ -1,0 +1,11 @@
+pycocotools
+tqdm
+cython
+scipy
+opencv-python
+packaging
+ftfy
+yacs
+regex
+timm==0.3.2
+randaugment
