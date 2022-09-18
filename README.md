@@ -2,8 +2,8 @@
 ========
 
 ## Introduction
-This repository is an official implementation of the **Obj2Seq**.
-Obj2Seq takes objects as basic units, and regards most visual tasks as sequence generation problems of objects.
+This repository is an official implementation of the **[Obj2Seq]()**.
+Obj2Seq takes objects as basic units, and regards most object-level visual tasks as sequence generation problems of objects.
 It first recognizes objects of given categories, and then generates a sequence to describe each of these objects. Obj2Seq is able to flexibly determine input categories and the definition of output sequences to satisfy customized requirements, and be easily extended to different visual tasks.
 
 
@@ -12,81 +12,29 @@ It first recognizes objects of given categories, and then generates a sequence t
 
 ## Main Results
 
+All results are trained with a ResNet-50 backbone.
 
 ### Object Detection
 
-|                        |  Epochs |  Params(M)  |  AP     |  Config/Model  |
+|                        |  Epochs |  Params(M)  |  $AP$    |  Model  |
 |:----------------------:|:-------:|:-----------:|:-------:|:--------------:|
-| DeformableDETR         |  50     |  40         |  44.5   |                |
-| Obj2Seq                |  50     |  40         |  45.7   | [config](configs/detection_r50.yaml) |
-| + iterative box refine |  50     |  42         |  46.7   | [config](configs/detection_r50_box_refine.yaml) |
+| [DeformableDETR](configs/deformable_detr.yaml)                               |  50     |  40         |  44.6   | [model](https://drive.google.com/file/d/16q3fpUHEQ-xsx1-mYz1B5wDhhGOHqNi1/view?usp=sharing) |
+| [Obj2Seq](configs/detection_r50_seqhead.yaml)                                |  50     |  40         |  45.7   | [model](https://drive.google.com/file/d/18IfX5gBeftSkRV3rB_pF40UuvklcAl_M/view?usp=sharing) |
+| [+ iterative box refine](configs/detection_r50_seqhead_plus_box_refine.yaml) |  50     |  42         |  46.7   | [model](https://drive.google.com/file/d/1_nA5FguVlfjVb3nl9VyFF8dVt7x6ex6b/view?usp=sharing) |
 
 ### Human Pose Estimation
 
-|            |  Epochs |  Params(M)  |  AP     |  Config/Model  |
-|:----------:|:-------:|:-----------:|:-------:|:--------------:|
-| Baseline   |  50     |  40         |  57.2   | [config](configs/keypoint_baseline_50e.yaml) |
-| Obj2Seq    |  50     |  40         |  60.1   | [config](configs/keypoint_seqhead_50e.yaml)  |
-| Obj2Seq    |  150    |  40         |  65.0   | [config](configs/keypoint_seqhead_150e.yaml) |
+|            |  Epochs |  Params(M)  |  $AP_{box}$  | $AP_{kps}$   |  Config/Model  |
+|:----------:|:-------:|:-----------:|:-------:|:-------:|:--------------:|
+| [Baseline](configs/keypoint_r50_baseline_50e.yaml) | 50  | 40 | 55.4 | 57.9 | [model](https://drive.google.com/file/d/1ymrMVpoddfUSi5lBEKZ-uXB8DobPnES9/view?usp=sharing) |
+| [Obj2Seq](configs/keypoint_r50_seqhead_50e.yaml)   | 50  | 40 | 55.4 | 61.2 | [model](https://drive.google.com/file/d/10-XJRb14TpOj5nX_aP-nk7wJq-axJRbb/view?usp=sharing)  |
+| [Obj2Seq](configs/keypoint_r50_seqhead_150e.yaml)  | 150 | 40 | 58.1 | 65.1 | [model](https://drive.google.com/file/d/10AAhtgLbe82N4qbVhsx3XtJDNoyXgc6K/view?usp=sharing) |
 
-*Note:*
-1. The results are based on ResNet-50 backbone.
-2. Our model will also be released later.
+You may also download these models from [BaiduNetdisk]().
 
+## Instructions
 
-## Usage
-
-### Installation
-First, clone the repository locally:
-```
-git clone https://github.com/CASIA-IVA-Lab/Obj2Seq.git
-```
-Then, install dependencies:
-```
-pip install -r requirements.txt
-```
-Install Multi-Scale Deformable Attention
-```
-cd models/ops
-bash ./make.sh
-```
-
-### Data Preparation
-
-Link path to coco2017 to data/coco
-```
-mkdir data
-ln -s /path/to/coco data/coco
-```
-or modify data path in config files
-```
-coco_path: /path/to/coco
-anno_train: /path/to/coco_train_json_file
-anno_val: /path/to/coco_val_json_file
-```
-
-### Training
-To train with slurm on multiple nodes:
-```
-bash scripts/run_slurm.sh NUM_NODES /path/to/config /path/to/output/dir [OTHER_ARGS]
-```
-For example, to train Obj2Seq on 2 nodes:
-```
-bash scripts/run_slurm.sh 2 configs/detection_r50.yaml checkpoints/detection_r50
-```
-
-We also provide scripts for pytorch distributed training:
-```
-bash run.sh /path/to/config /path/to/output/dir
-```
-
-Make sure to modify `DATA.batch_size` (number of images on each GPU) in config and `PARTITION` in `run_slurm.sh` first.
-
-### Evaluation
-To evaluate Obj2Seq on a single node with 8 GPUs:
-```
-bash run.sh /path/to/config /path/to/output/dir --eval [--resume /path/to/checkpoint.pth] 
-```
+See [GET_STARTED.md](GET_STARTED.md).
 
 ## Citation
 
@@ -94,16 +42,10 @@ If you find this project useful for your research, please consider citing this p
 
 
 ## Acknowledgement
-We thank all repositories we refer to for their contributions in the open source community.
 
-| Code asset      | License    | Utility |
-|:---------------:|:----------:|:-----------:|
-| DETR            | Apache 2.0 | Foundation for our code |
-| Deformable DETR | Apache 2.0 | Foundation for our code |
-| Anchor DETR     | Apache 2.0 | Foundation for our code |
-| ASL             | MIT        | Asymmetric loss for classification |
-| Query2Label     | MIT        | Metric for classification |
-| Detic           | Apache 2.0 | Generate CLIP-initialized vectors |
-| CLIP            | MIT        | Generate CLIP-initialized vectors |
-| Mask R-CNN      | MIT        | Dataset for keypoint annotations |
-| Swin Transformer| MIT        | Config file |
+Our repository is mainly built upon [DETR](https://github.com/facebookresearch/Detr), [Deformable-DETR](https://github.com/fundamentalvision/Deformable-DETR)
+ and [Anchor-DETR](https://github.com/megvii-research/AnchorDETR). We also refer 
+ - [ASL](https://github.com/Alibaba-MIIL/ASL), [Query2Label](https://github.com/SlongLiu/query2labels)  for multi-label classification.
+ - [CLIP](https://github.com/openai/clip), [Detic](https://github.com/facebookresearch/Detic) for class-vector generation.
+ - [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark) for the dataset with keypoint annotations.
+ - [Swin-Transformer](https://github.com/SwinTransformer/Swin-Transformer-Object-Detection) for configs and the swin backbone.
