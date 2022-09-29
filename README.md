@@ -2,10 +2,11 @@
 ========
 
 ## Introduction
-This repository is an official implementation of the **[Obj2Seq]()**.
+This repository is an official implementation of the **[Obj2Seq](https://arxiv.org/abs/2209.13948)**.
 Obj2Seq takes objects as basic units, and regards most object-level visual tasks as sequence generation problems of objects.
 It first recognizes objects of given categories, and then generates a sequence to describe each of these objects. Obj2Seq is able to flexibly determine input categories and the definition of output sequences to satisfy customized requirements, and be easily extended to different visual tasks.
 
+**Obj2Seq: [Paper](https://arxiv.org/abs/2209.13948) | [Github](https://github.com/CASIA-IVA-Lab/Obj2Seq) | [Gitee](https://gitee.com/volgachen/Obj2Seq)**
 
 ![Obj2Seq](.github/pipeline.png)
 
@@ -30,7 +31,7 @@ All results are trained with a ResNet-50 backbone.
 | [Obj2Seq](configs/keypoint_r50_seqhead_50e.yaml)   | 50  | 40 | 55.4 | 61.2 | [model](https://drive.google.com/file/d/10-XJRb14TpOj5nX_aP-nk7wJq-axJRbb/view?usp=sharing)  |
 | [Obj2Seq](configs/keypoint_r50_seqhead_150e.yaml)  | 150 | 40 | 58.1 | 65.1 | [model](https://drive.google.com/file/d/10AAhtgLbe82N4qbVhsx3XtJDNoyXgc6K/view?usp=sharing) |
 
-You may also download these models from [BaiduNetdisk]().
+You may also download these models from [BaiduNetdisk](https://pan.baidu.com/s/1QnVFm-JOzgOi4PjfnwhbAA?pwd=nips).
 
 ## Instructions
 

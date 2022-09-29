@@ -57,7 +57,7 @@ We also provide scripts for pytorch distributed training:
 bash run.sh /path/to/config /path/to/output/dir
 ```
 
-Make sure to modify `DATA.batch_size` (number of images on each GPU) in config and `PARTITION` in `run_slurm.sh` first.
+Before running, you may need to modify `DATA.batch_size` (number of images on each GPU) in config according to your GPUs.
 
 ### Evaluation
 To evaluate Obj2Seq on a single node with 8 GPUs:
