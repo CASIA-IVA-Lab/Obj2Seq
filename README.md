@@ -41,6 +41,14 @@ See [GET_STARTED.md](GET_STARTED.md).
 
 If you find this project useful for your research, please consider citing this paper.
 
+```
+@misc{obj2seq,
+Author = {Zhiyang Chen and Yousong Zhu and Zhaowen Li and Fan Yang and Wei Li and Haixin Wang and Chaoyang Zhao and Liwei Wu and Rui Zhao and Jinqiao Wang and Ming Tang},
+Title = {Obj2Seq: Formatting Objects as Sequences with Class Prompt for Visual Tasks},
+Year = {2022},
+Eprint = {arXiv:2209.13948},
+}
+```
 
 ## Acknowledgement
 
