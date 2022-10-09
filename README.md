@@ -19,9 +19,11 @@ All results are trained with a ResNet-50 backbone.
 
 |                        |  Epochs |  Params(M)  |  $AP$    |  Model  |
 |:----------------------:|:-------:|:-----------:|:-------:|:--------------:|
-| [DeformableDETR](configs/deformable_detr.yaml)                               |  50     |  40         |  44.6   | [model](https://drive.google.com/file/d/16q3fpUHEQ-xsx1-mYz1B5wDhhGOHqNi1/view?usp=sharing) |
+| [DeformableDETR](configs/deformable_detr.yaml)$^\dagger$                     |  50     |  40         |  44.6   | [model](https://drive.google.com/file/d/16q3fpUHEQ-xsx1-mYz1B5wDhhGOHqNi1/view?usp=sharing) |
 | [Obj2Seq](configs/detection_r50_seqhead.yaml)                                |  50     |  40         |  45.7   | [model](https://drive.google.com/file/d/18IfX5gBeftSkRV3rB_pF40UuvklcAl_M/view?usp=sharing) |
 | [+ iterative box refine](configs/detection_r50_seqhead_plus_box_refine.yaml) |  50     |  42         |  46.7   | [model](https://drive.google.com/file/d/1_nA5FguVlfjVb3nl9VyFF8dVt7x6ex6b/view?usp=sharing) |
+
+$^\dagger$ *We convert [official](https://drive.google.com/file/d/1nDWZWHuRwtwGden77NLM9JoWe-YisJnA/view?usp=sharing) DeformableDETR checkpoint with [this script](scripts/convert_deformable_detr_weight.py).*
 
 ### Human Pose Estimation
 

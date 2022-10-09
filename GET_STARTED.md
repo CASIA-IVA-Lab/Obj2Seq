@@ -38,8 +38,17 @@ DATA:
 
 We provide CLIP-initialied class prompts [here](word_arrays/). If prompts for other sets of categories are required, please follow this section.
 
+1. Prepare COCO-like json file.
+
+2. Run the command below to generate class prompts embeddings.
 ```
-(TO BE FILLED)
+python scripts/dump_clip_features.py --ann JSON_FILE_PATH --out_path OUTPUT_PATH
+```
+For example
+```
+python scripts/dump_clip_features.py \
+       --ann data/coco/annotations/instances_val2017.json \
+       --out_path word_arrays/coco_clip_v2.npy
 ```
 
 ## Training
