@@ -94,6 +94,7 @@ class PromptIndicator(nn.Module):
                 self.register_parameter("class_prompts", nn.Parameter(class_prompts))
         # rand init
         else:
+            num_classes = args.num_classes
             class_prompts = torch.zeros(num_classes, self.d_model)
             assert args.fix_class_prompts == False
             self.register_parameter("class_prompts", nn.Parameter(class_prompts))
@@ -157,7 +158,7 @@ class PromptIndicator(nn.Module):
         # select some classes
         if self.retention_policy is not None:
             force_sample_probs = torch.stack([t["force_sample_probs"] for t in targets]) if self.training else None
-            num_classes = torch.stack([t["num_classes"] for t in targets])
+            num_classes = torch.cat([t["num_classes"] for t in targets])
             bs_idxs, cls_idxs = self.retention_policy(label_logits, force_sample_probs, num_classes)    # bs, k'
             return_tgts = tgt_class[bs_idxs, cls_idxs]
             outputs.update({

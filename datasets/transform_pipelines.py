@@ -45,7 +45,7 @@ def make_coco_transforms(image_set, args):
         if args.arrange_by_class:
             transforms.extend([
                 normalize,
-                T.GenerateClassificationResults(num_cats=80),
+                T.GenerateClassificationResults(num_cats=args.num_classes),
                 T.RearrangeByCls(min_keypoints_train=args.min_keypoints_train),
             ])
         else:
@@ -59,7 +59,7 @@ def make_coco_transforms(image_set, args):
         ]
         if args.arrange_by_class:
             transforms.extend([
-                T.GenerateClassificationResults(num_cats=80),
+                T.GenerateClassificationResults(num_cats=args.num_classes),
                 T.RearrangeByCls(),
             ])
         return T.Compose(transforms)

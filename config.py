@@ -38,6 +38,7 @@ _C.DATA.TRANSFORM.input_size = 800
 _C.DATA.TRANSFORM.max_input_size = 1333
 _C.DATA.TRANSFORM.large_scale_jitter = False
 _C.DATA.TRANSFORM.color_jitter = False
+_C.DATA.TRANSFORM.num_classes = 80
 _C.DATA.TRANSFORM.arrange_by_class = True
 _C.DATA.TRANSFORM.min_keypoints_train = 0
 
@@ -121,6 +122,7 @@ _C.MODEL.PROMPT_INDICATOR.BLOCK = copy.deepcopy(BASIC_LAYER_CFG)
 _C.MODEL.PROMPT_INDICATOR.BLOCK.no_self_attn = True
 # cfg for prompt vectors
 _C.MODEL.PROMPT_INDICATOR.CLASS_PROMPTS = CN()
+_C.MODEL.PROMPT_INDICATOR.CLASS_PROMPTS.num_classes = 80
 _C.MODEL.PROMPT_INDICATOR.CLASS_PROMPTS.init_vectors = "" # .npy or .pth file, empty means random initialized
 _C.MODEL.PROMPT_INDICATOR.CLASS_PROMPTS.fix_class_prompts = False
 # cfg for classifier
