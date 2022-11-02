@@ -6,7 +6,7 @@ This repository is an official implementation of the **[Obj2Seq](https://arxiv.o
 Obj2Seq takes objects as basic units, and regards most object-level visual tasks as sequence generation problems of objects.
 It first recognizes objects of given categories, and then generates a sequence to describe each of these objects. Obj2Seq is able to flexibly determine input categories and the definition of output sequences to satisfy customized requirements, and be easily extended to different visual tasks.
 
-**Obj2Seq: [Paper](https://arxiv.org/abs/2209.13948) | [Github](https://github.com/CASIA-IVA-Lab/Obj2Seq) | [Gitee](https://gitee.com/volgachen/Obj2Seq)**
+**Obj2Seq: [Arxiv](https://arxiv.org/abs/2209.13948) | [Github](https://github.com/CASIA-IVA-Lab/Obj2Seq) | [Gitee](https://gitee.com/volgachen/Obj2Seq)**
 
 ![Obj2Seq](.github/pipeline.png)
 
@@ -44,11 +44,14 @@ See [GET_STARTED.md](GET_STARTED.md).
 If you find this project useful for your research, please consider citing this paper.
 
 ```
-@misc{obj2seq,
-Author = {Zhiyang Chen and Yousong Zhu and Zhaowen Li and Fan Yang and Wei Li and Haixin Wang and Chaoyang Zhao and Liwei Wu and Rui Zhao and Jinqiao Wang and Ming Tang},
-Title = {Obj2Seq: Formatting Objects as Sequences with Class Prompt for Visual Tasks},
-Year = {2022},
-Eprint = {arXiv:2209.13948},
+@inproceedings{
+chen2022objseq,
+title={Obj2Seq: Formatting Objects as Sequences with Class Prompt for Visual Tasks},
+author={Zhiyang Chen and Yousong Zhu and Zhaowen Li and Fan Yang and Wei Li and Haixin Wang and Chaoyang Zhao and Liwei Wu and Rui Zhao and Jinqiao Wang and Ming Tang},
+booktitle={Advances in Neural Information Processing Systems},
+editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
+year={2022},
+url={https://openreview.net/forum?id=cRNl08YWRKq}
 }
 ```
 
